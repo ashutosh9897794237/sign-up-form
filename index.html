@@ -8,35 +8,95 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-     <div class="container">
-    <div class="new">
-        New Employees
-    </div><br>
-    <form onsubmit="Employee()" class="form" id="form">
-       <div> Enter Name <br><br>
-       <input type="text" id="name">
-    </div>
-     <div> Email Id <br><br>
-       <input type="text" placeholder="exmpale@gmail.com" id="Email">
-    </div>
-     <div> Password <br><br>
-       <input type="password" placeholder="Exmpale@123" id="Password">
-    </div>
-    </form>
-    <br><br>
-    <button type="submit" id="Add">Add User</button>
-    <a href="index2.html" > login </a>
-    <table>
-        <thead>
-            <tr class="row">
-                <th>name</th>
-                <th>Email</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    </div>
-     <script src="script.js"></script>
+      <form class="signup">
+        <fieldset>
+            <legend>signup Form</legend>
+            <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" id="name" placeholder="Enter your name"> 
+          <br><br>
+          <label for="email">Email</label>
+          <br>
+          <input type="email" name="email" id="email" placeholder="Enter your email"> 
+            <br><br><label for="password">Password</label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Enter your password"> 
+              <br><br><label for="Confirm-Password">Confirm Password</label>
+              <br>
+              <input type="password" name="Confrim-password" id="Confrim-password" placeholder="Enter your Confrim-password"> 
+                <br><br>
+
+                <input type="Submit">
+        </fieldset>
+
+      </form>    
+     <script src="">
+           let signup = document.querySelector('.signup');
+           let nameInput = document.getElementById('name');
+let passwordInput = document.getElementById('password');
+let emailInput = document.getElementById('email');
+    
+              signup_form.addEventListner('Submit',validationform)
+
+        function validationform(e){
+            e.preventDefualt();
+            let name = input_name.value;
+            let email = input_email.value;
+            let password = input_password.value;
+            let confirm_password = input_confirm_password.value;
+        
+        if(chacknumberofWords(name)<2){
+            error.innerHTML = 'Name must be at least 2 words';
+        }
+       else if(email.indexOf('0') == -1){
+            error.innerHTML = 'Email must be contain @';
+        }
+        else if(checkPassword(password,name,email) == false){
+            error.innerHTML = 'Password must contain at least 1 Uppercase, 1 Lowercase, 1 number and 1 special charcter'
+        }
+        else if(Password != confirm_password) {
+            error.innerHTML = 'Password and confirm password must be same';
+        }
+        else{
+            error.innerHTML = 'Form Submitted SuccessFully';
+        }
+        }
+
+
+        function checkNumberofWords(name){
+             
+            let name = name.trim();
+
+            let arr = name.split(' ');
+
+            return arr.length
+        }
+
+        function checkPassword(password,name,email){
+            let cl = 0 , sl = 0 , n = 0 , sc = 0
+            for(let t of password){
+                if(t>="A" && t<="Z"){
+                    cl++
+                }
+                else if(t>="a" && t>=Z){
+                    sl++
+                }
+                else if(t>="a" && t>=Z){
+                    n++
+                }
+                else{
+                    SC++
+                }
+            }
+            if(CL=1 && sl>=1 && n>=1 && sc>=1 && password != name && password != email)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
+     </script>
 </body>
 </html>
